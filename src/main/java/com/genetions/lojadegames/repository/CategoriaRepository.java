@@ -1,5 +1,5 @@
 package com.genetions.lojadegames.repository;
 
-public class Produto {
+public interface CategoriaRepository {
 
 }
