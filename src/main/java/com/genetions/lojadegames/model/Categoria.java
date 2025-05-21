@@ -1,0 +1,5 @@
+package com.genetions.lojadegames.model;
+
+public class Categoria {
+
+}
