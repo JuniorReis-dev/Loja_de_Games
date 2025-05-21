@@ -1,10 +1,8 @@
-```markdown
+````markdown
 # Loja de Games - Backend com Spring Boot
 
 <div align="center">
 <!-- Adicione a URL de um logo real aqui, hospedado no Imgur ou GitHub -->
-<img src="https://i.imgur.com/LojaGamesLogo.png" title="source: imgur.com" width="300" alt="Logo Loja de Games" />
-</div>
 
 <div align="center">
 <img src="https://img.shields.io/github/languages/top/JuniorReis-dev/Loja_de_Games?style=flat-square" />
@@ -18,6 +16,7 @@
 O **Loja de Games** é uma aplicação de e-commerce desenvolvida para gerenciar a venda de jogos digitais, permitindo o cadastro, consulta e organização de produtos (jogos) por categorias. Este projeto foi criado com fins educacionais, simulando uma loja virtual para praticar conceitos de API REST com **Java** e **Spring Boot**.
 
 **Recursos principais**:
+
 - Cadastro, edição e exclusão de jogos
 - Organização de jogos por categorias (ex.: Ação, Aventura, RPG)
 - Consulta de jogos por categoria ou nome
@@ -41,6 +40,7 @@ A API da Loja de Games foi construída utilizando **Java** e o **framework Sprin
     }
   ]
   ```
+````
 
 - **POST /produtos** - Cadastra um novo jogo
   **Exemplo de Requisição**:
@@ -54,11 +54,12 @@ A API da Loja de Games foi construída utilizando **Java** e o **framework Sprin
   ```
 
 > [!TIP]
-> Teste os endpoints com [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/). Veja a documentação completa em `http://localhost:8080/swagger-ui.html`.
+> Teste os endpoints com [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/). Veja a documentação completa em `http://localhost:8080/swagger-ui.html`, se configurada.
 
 ## 3. Estrutura do Projeto
 
 O projeto segue a estrutura padrão de uma aplicação Spring Boot:
+
 - **com.generation.lojadegames.model**: Contém as entidades `Produto` e `Categoria`.
 - **com.generation.lojadegames.repository**: Repositórios JPA para acesso ao banco.
 - **com.generation.lojadegames.controller**: Controladores REST para os endpoints.
@@ -109,14 +110,14 @@ erDiagram
 
 ## 6. Tecnologias Utilizadas
 
-| Item                          | Descrição       |
-|-------------------------------|-----------------|
-| Servidor                     | Tomcat          |
-| Linguagem de programação     | Java            |
-| Framework                    | Spring Boot     |
-| Gerenciador de Dependências  | Maven           |
-| ORM                          | JPA + Hibernate |
-| Banco de Dados               | MySQL           |
+| Item                        | Descrição       |
+| --------------------------- | --------------- |
+| Servidor                    | Tomcat          |
+| Linguagem de programação    | Java            |
+| Framework                   | Spring Boot     |
+| Gerenciador de Dependências | Maven           |
+| ORM                         | JPA + Hibernate |
+| Banco de Dados              | MySQL           |
 
 ## 7. Requisitos
 
@@ -149,6 +150,7 @@ erDiagram
 ## 9. Contribuição
 
 Contribuições são bem-vindas! Para colaborar:
+
 - Crie uma **issue** para reportar bugs ou sugestões.
 - Envie um **pull request** com melhorias.
 - Compartilhe com outros aprendizes de Java!
@@ -157,4 +159,7 @@ Contribuições são bem-vindas! Para colaborar:
 
 Desenvolvido por [**Junior Reis**](https://github.com/JuniorReis-dev).
 Para dúvidas ou colaborações, abra uma issue no [repositório](https://github.com/JuniorReis-dev/Loja_de_Games).
+
+```
+
 ```
