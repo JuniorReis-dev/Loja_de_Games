@@ -33,14 +33,8 @@ public class Produto {
 
     @ManyToOne
     @JsonIgnoreProperties("produtos")
-    @NotNull(message = "A categoria é obrigatória!")
     private Categoria categoria;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    @JsonIgnoreProperties("produtos")
-    @NotNull(message = "O usuário é obrigatório!")
-    private Usuario usuario;
 
     // Getters e Setters
     public Long getId() {
@@ -83,11 +77,4 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }
