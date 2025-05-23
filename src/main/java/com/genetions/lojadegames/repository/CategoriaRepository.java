@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.genetions.lojadegames.model.Categoria;
 
-@Repository 
+@Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
-
-	 List<Categoria> findAllByNomeContainingIgnoreCase(String nome);
-    // Este método encontrará categorias pela descrição
+    List<Categoria> findAllByNomeContainingIgnoreCase(String nome);
     List<Categoria> findAllByDescricaoContainingIgnoreCase(String descricao);
 }

@@ -19,47 +19,56 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "tb_categoria")
 public class Categoria {
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 1000)
     @NotBlank(message = "O atributo descricao é obrigatório!")
-    @Size(max = 1000, message = "O atributo descricao deve ter no mínimo 10 caracteres e no máximo 1000 caracteres.")
+    @Size(min = 10, max = 1000, message = "O atributo descricao deve ter entre 10 e 1000 caracteres.")
     private String descricao;
-    
+
     @Column(length = 100)
     @NotBlank(message = "O atributo nome é obrigatório!")
     @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9\\s]*$", message = "O nome deve começar com uma letra e conter apenas letras, números ou espaços")
-    @Size(min = 2, max = 100, message = "O nome deve ter entre 5 e 100 caracteres.")
+    @Size(min = 2, max = 100, message = "O nome deve ter entre 2 e 100 caracteres.")
     private String nome;
-    
-    public String getNome() {
-		return nome;
-	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL) 
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("categoria")
     private List<Produto> produtos;
-    
-   
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 }

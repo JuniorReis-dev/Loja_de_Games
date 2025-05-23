@@ -20,17 +20,20 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.genetions.lojadegames.model.Categoria;
 import com.genetions.lojadegames.repository.CategoriaRepository;
+import com.genetions.lojadegames.repository.ProdutoRepository;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-
 public class CategoriaController {
-	
-	@Autowired
+
+    @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     @GetMapping
     public ResponseEntity<List<Categoria>> getAll() {
@@ -43,6 +46,7 @@ public class CategoriaController {
                 .map(resposta -> ResponseEntity.ok(resposta))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
     @GetMapping("/nome/{nome}")
     public ResponseEntity<List<Categoria>> getAllByNome(@PathVariable String nome) {
         return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(nome));
@@ -63,11 +67,9 @@ public class CategoriaController {
         if (categoria.getId() == null) {
             return ResponseEntity.badRequest().build();
         }
-
         if (categoriaRepository.existsById(categoria.getId())) {
             return ResponseEntity.status(HttpStatus.OK).body(categoriaRepository.save(categoria));
         }
-
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
@@ -75,12 +77,12 @@ public class CategoriaController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
-
         if (categoria.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria não encontrada!");
         }
-
+        if (produtoRepository.existsByCategoriaId(id)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria está associada a produtos e não pode ser excluída!");
+        }
         categoriaRepository.deleteById(id);
     }
-	
 }
